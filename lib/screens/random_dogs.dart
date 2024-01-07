@@ -5,9 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
 class RandomDogsScreen extends StatefulWidget {
-  const RandomDogsScreen({super.key, required this.enableSubBreeds});
+  const RandomDogsScreen({super.key, required this.enableSubBreeds, this.httpClient});
 
   final bool enableSubBreeds;
+  final http.Client? httpClient;
 
   @override
   State<StatefulWidget> createState() {
@@ -26,7 +27,7 @@ class _RandomDogsScreenState extends State<RandomDogsScreen> {
   //this method is called in init state to initialize the list of breeds and to load first image
   _fetchBreeds() async {
     final response =
-        await http.get(Uri.parse('https://dog.ceo/api/breeds/list'));
+        await widget.httpClient!.get(Uri.parse('https://dog.ceo/api/breeds/list'));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = await json.decode(response.body);
       setState(
@@ -39,7 +40,7 @@ class _RandomDogsScreenState extends State<RandomDogsScreen> {
         },
       );
       //fetching the starting image, when opening the screen
-      final imageResponse = await http.get(
+      final imageResponse = await widget.httpClient!.get(
           Uri.parse('https://dog.ceo/api/breed/$_selectedBreed/images/random'));
       Map<String, dynamic> imageData = await json.decode(imageResponse.body);
       setState(() {
@@ -54,14 +55,14 @@ class _RandomDogsScreenState extends State<RandomDogsScreen> {
   //this method is called when users try to load a new random image
   _fetchNewImage() async {
     if (_selectedSubBreed.isEmpty) {
-      final response = await http.get(
+      final response = await widget.httpClient!.get(
           Uri.parse('https://dog.ceo/api/breed/$_selectedBreed/images/random'));
       Map<String, dynamic> data = await json.decode(response.body);
       setState(() {
         _imageUrl = data['message'].toString();
       });
     } else {
-      final response = await http.get(
+      final response = await widget.httpClient!.get(
           Uri.parse('https://dog.ceo/api/breed/$_selectedBreed/$_selectedSubBreed/images/random'));
       Map<String, dynamic> data = await json.decode(response.body);
       setState(() {
@@ -72,7 +73,7 @@ class _RandomDogsScreenState extends State<RandomDogsScreen> {
 
   _fetchSubBreeds() async {
     print('https://dog.ceo/api/breed/$_selectedBreed/list');
-    final response = await http.get(
+    final response = await widget.httpClient!.get(
       Uri.parse('https://dog.ceo/api/breed/$_selectedBreed/list'),
     );
     Map<String, dynamic> data = await json.decode(response.body);

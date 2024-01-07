@@ -40,7 +40,10 @@ class _DogsListScreenState extends State<DogsListScreen> {
           if (_selectedBreed.isEmpty && _breeds.isNotEmpty) {
             _selectedBreed = _breeds.first;
             _fetchSubBreeds();
-            _isLoading = false;
+            _fetchImages();
+            if(widget.enableSubBreeds == false) {
+              _isLoading = false;
+            }
           }
         },
       );
@@ -62,6 +65,7 @@ class _DogsListScreenState extends State<DogsListScreen> {
     } else {
       setState(() {
         _selectedSubBreed = '';
+        _isLoading = false;
       });
     }
   }
