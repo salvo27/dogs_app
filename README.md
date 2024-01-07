@@ -7,3 +7,4 @@ To implements this functionalities I used two screens:
 -random dog images screen; (where I show one random dog for his breed or for his breed and his sub breed);
 -dogs list screen (where I show all dogs by breed or by breed and sub breed).
 I used the https://dog.ceo/dog-api API to get all data, I first load all breed and sub breed and after load images.
+I'm not able in testing, so I decided to start lear how to test a flutter application, but due to delivery time, I'm not able to do it in one day.
