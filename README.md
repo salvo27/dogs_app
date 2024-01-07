@@ -1,16 +1,10 @@
-# dogs_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We have a simple application with an home screen, where you can choose to display images in 4 different modes: 
+-Random image by breed; (there is a button for every type of view)
+-Images list by breed;
+-Random image by breed and sub breed;
+-Images list by breed and sub breed.
+To implements this functionalities I used two screens:
+-random dog images screen; (where I show one random dog for his breed or for his breed and his sub breed);
+-dogs list screen (where I show all dogs by breed or by breed and sub breed).
+I used the https://dog.ceo/dog-api API to get all data, I first load all breed and sub breed and after load images.
+I'm not able in testing, so I decided to start lear how to test a flutter application, but due to delivery time, I'm not able to do it in one day.
