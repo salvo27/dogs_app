@@ -1,4 +1,4 @@
-We have a simple application with an home screen, where you can choose to display images in 4 different modes:
+We have a simple application with an home screen, where you can choose to display images in 4 different modes: /n
 -Random image by breed; (there is a button for every type of view)
 -Images list by breed;
 -Random image by breed and sub breed;
